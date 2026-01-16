@@ -1,8 +1,6 @@
 import uvicorn
 from fastapi import FastAPI, UploadFile, File, Form
 from fastapi.middleware.cors import CORSMiddleware
-# from pydantic import BaseModel
-# from typing import List
 from MlModels import knn,Linear_Regression,Logistic_Regression,Naive_Bayes
 
 app = FastAPI()
@@ -16,13 +14,11 @@ app.add_middleware(
     allow_methods=["*"],
     allow_headers=["*"],
 )
-
 @app.post("/train")
 def upload_dataset(
     file: UploadFile = File(...),
     model: str = Form(...)
-):
-    
+):  
     if(model=="K_Nearest_Neighbours"):
         accuracy=knn(file)
     elif(model=="Linear_Regression"):
@@ -33,8 +29,6 @@ def upload_dataset(
         accuracy=Naive_Bayes(file)
     else:
         accuracy="Please select a model"
-
-
     return {
         "dataset_name": file.filename,
         "model_name": model,

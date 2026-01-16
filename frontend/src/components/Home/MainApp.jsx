@@ -25,8 +25,6 @@ const handleSubmit =async ()=> {
         console.log(result);  
         setAns(result)  
 }
-  
-  
   return (
     <div className="page">
       <div className="home-container">
@@ -58,8 +56,6 @@ const handleSubmit =async ()=> {
         </div>
 
       </div>
-
-      {/* BOTTOM – OUTPUT */}
       <div className="output-card">
         <h2>Output</h2>
         <p><strong>Model:</strong> {ans.model_name}</p>
